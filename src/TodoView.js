@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {BiCalendarEvent} from "react-icons/bi"
 import {BsBell} from "react-icons/bs"
 import {GiCheckMark} from "react-icons/gi"
@@ -33,44 +33,40 @@ function TaskTitle (props) {
     )
   }
   
-  class Checkbox extends React.Component {
-    constructor(props){
-      super(props);
-      this.state = {
-        checked: props.checked, //props.checked
-        hovering: false
-      }
-      this.handleClick = this.handleClick.bind(this);
-      this.initHover = this.initHover.bind(this);
-      this.endHover = this.endHover.bind(this);
+  function Checkbox (props) {
+    
+    const [checked, setChecked] = useState(props.checked);
+    const [hovering, setHovering] = useState(false);
+  
+    function initHover (){
+      setHovering(true)
     }
   
-    initHover (){
-      this.setState({hovering: true})
+    function endHover (){
+      setHovering(false)
     }
   
-    endHover (){
-      this.setState({hovering: false})
-    }
-  
-    handleClick(){   
-      this.setState({
+    function handleClick(){   
+      setChecked(!checked);
+      props.callback(checked)
+      /*this.setState({
         checked: !this.state.checked
       }, function () {
         this.props.callback(this.state.checked);
-      });
+      });*/
     }
-  
-    render () {
-      var clrIcon = this.state.checked ? "#fff" : "#4caf50";
-      var clrBackground = this.state.checked ? "#4caf50" : "#fff";
-      var visIcon = this.state.checked || this.state.hovering ? "visible" : "hidden";
-      return (
-        <div className="checkbox" onClick={this.handleClick} style={{backgroundColor: clrBackground}} onMouseEnter={this.initHover} onMouseLeave={this.endHover}>
-          <GiCheckMark className="ic-checkbox" style={{color: clrIcon, visibility: visIcon, "&:hover": "visible"}}/>
-        </div>
-      )
-    }
+
+    var clrIcon = checked ? "#fff" : "#4caf50";
+    var clrBackground = checked ? "#4caf50" : "#fff";
+    var visIcon = checked || hovering ? "visible" : "hidden";
+
+    return (
+      <div className="checkbox" onClick={handleClick} style={{backgroundColor: clrBackground}} onMouseEnter={initHover} onMouseLeave={endHover}>
+        <GiCheckMark className="ic-checkbox" style={{color: clrIcon, visibility: visIcon, "&:hover": "visible"}}/>
+      </div>
+    )  
+          
+    
   } 
   
   function Task(props) {
