@@ -36,6 +36,7 @@ import "./TodoView.css"
   function Checkbox (props) {
     
     const firstRender = useRef(true)
+    const callback = props.callback;
     const [checked, setChecked] = useState(props.checked);
     const [hovering, setHovering] = useState(false);
   
@@ -53,9 +54,9 @@ import "./TodoView.css"
 
     useEffect (() => {      
       if(!firstRender.current){
-        props.callback(checked);  
+        callback(checked);  
       }
-    }, [checked])
+    }, [checked, callback])
 
     useEffect (() => {
       firstRender.current = false
