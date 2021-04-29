@@ -1,36 +1,25 @@
 import "./AddTodo.css"
 import {BsPlus} from "react-icons/bs"
-import React from "react"
+import React, {useState, useEffect} from "react"
 
-class AddText extends React.Component {
+function AddText (props) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: "",
-            callback: this.props.callback
-        };
+    const [value, setValue] = useState(""); 
+    const callback = props.callback;
 
-
+    function handleChange (e){
+        setValue(e.target.value);
     }
 
-    handleChange (e){
-        this.setState({
-            value: e.target.value
-        });
+    function taskAdded (title){
+        callback(title)
     }
 
-    taskAdded (title){
-        this.state.callback(title)
-    }
-
-    render () {    
-        return (
-            <div className="add-field">
-                <input type="input" onChange={this.handleChange.bind(this)} placeholder="Neue Aufgabe" className="add-field-input"/>
-            </div>
-        )
-    }
+    return (
+        <div className="add-field">
+            <input type="input" onChange={handleChange} placeholder="Neue Aufgabe" className="add-field-input"/>
+        </div>
+    )
 }
 
 function AddButton (props){
