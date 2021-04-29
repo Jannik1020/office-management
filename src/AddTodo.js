@@ -1,23 +1,31 @@
 import "./AddTodo.css"
 import {BsPlus} from "react-icons/bs"
 import React, {useState, useEffect} from "react"
+import { GiConsoleController } from "react-icons/gi";
 
 function AddText (props) {
 
     const [value, setValue] = useState(""); 
-    const callback = props.callback;
+    const callbackText = props.callbackText;
+    const callbackSubmit = props.callbackSubmit
 
     function handleChange (e){
         setValue(e.target.value);
     }
 
     function taskAdded (title){
-        callback(title)
+        callbackText(title)
+    }
+
+    function handleKeyPress (e) {
+        if(e.key === "Enter") {
+            callbackSubmit()
+        }
     }
 
     return (
         <div className="add-field">
-            <input type="input" onChange={handleChange} placeholder="Neue Aufgabe" className="add-field-input"/>
+            <input type="input" onChange={handleChange} placeholder="Neue Aufgabe" className="add-field-input" onKeyPress={handleKeyPress}/>
         </div>
     )
 }
@@ -38,7 +46,7 @@ function AddButton (props){
 export default function AddView (props) {
     var submitted = false;
 
-    function btnClicked () {
+    function taskSubmitted () {
         submitted= true
     }
 
@@ -48,8 +56,8 @@ export default function AddView (props) {
 
     return (
         <div className="add-view">
-            <AddButton callback={btnClicked}/>
-            <AddText callback={taskAdded}/>
+            <AddButton callback={taskSubmitted}/>
+            <AddText callbackText={taskAdded} callbackSubmit={taskSubmitted}/>
         </div>
     )
 }
