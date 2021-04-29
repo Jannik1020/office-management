@@ -8,18 +8,15 @@ function PageWrapper () {
   var newTitle = ""
   var submitted
 
-  function callbackBtn (){
-
-  }
-
   function callbackInput (title){
+    console.log(title)
     newTitle = title;
   }
 
   return (
     <div className="page-wrapper">
       <TaskList/>
-      <AddView callbackBtn={callbackBtn} callbackInput={callbackBtn}/>
+      <AddView callbackInput={callbackInput}/>
     </div>
   )
 }

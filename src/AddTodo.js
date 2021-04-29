@@ -10,11 +10,8 @@ function AddText (props) {
     const callbackSubmit = props.callbackSubmit
 
     function handleChange (e){
-        setValue(e.target.value);
-    }
-
-    function taskAdded (title){
-        callbackText(title)
+        setValue(e.target.value);        
+        callbackText(e.target.value)
     }
 
     function handleKeyPress (e) {
@@ -25,7 +22,7 @@ function AddText (props) {
 
     return (
         <div className="add-field">
-            <input type="input" onChange={handleChange} placeholder="Neue Aufgabe" className="add-field-input" onKeyPress={handleKeyPress}/>
+            <input type="input" value={value} onChange={handleChange} placeholder="Neue Aufgabe" className="add-field-input" onKeyPress={handleKeyPress}/>
         </div>
     )
 }
@@ -44,14 +41,17 @@ function AddButton (props){
 }
 
 export default function AddView (props) {
-    var submitted = false;
+    const [taskTitle, setTaskTitle] = useState("")
+    const [submitted, setSubmitted] = useState(false);
 
     function taskSubmitted () {
-        submitted= true
+        if(taskTitle != ""){
+            props.callbackInput(taskTitle)
+        }
     }
 
     function taskAdded (title) {
-        props.callbackInput(title)
+        setTaskTitle(title)
     }
 
     return (
