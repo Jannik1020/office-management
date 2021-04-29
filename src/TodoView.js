@@ -4,7 +4,7 @@ import {BsBell} from "react-icons/bs"
 import {GiCheckMark} from "react-icons/gi"
 import "./TodoView.css"
 
-function TaskTitle (props) {
+  function TaskTitle (props) {
     return (
       <div className="task-title">
         <p className="text">
@@ -69,9 +69,7 @@ function TaskTitle (props) {
       <div className="checkbox" onClick={handleClick} style={{backgroundColor: clrBackground}} onMouseEnter={initHover} onMouseLeave={endHover}>
         <GiCheckMark className="ic-checkbox" style={{color: clrIcon, visibility: visIcon, "&:hover": "visible"}}/>
       </div>
-    )  
-          
-    
+    )    
   } 
   
   function Task(props) {
@@ -89,68 +87,60 @@ function TaskTitle (props) {
     )
   }
   
-  export default class TaskList extends React.Component {
+  export default function TaskList () {
+
+    const createTask = (index, title, callback, checked) => <Task key={index} id={index} title={title} callback={callback} checked={checked}/>
   
-    constructor(props) {
-      super(props);
-      this.state = {
-        tasks: ["Brötchen backen", "Brötchen verkaufen", "Geld aus der Kasse nehmen", "Feierabend"].map((taskTitle, index) => {
-          return this.createTask(index, taskTitle, this.handleCheckboxClick, false)//<Task key={index} id={index} title={taskTitle} callback={this.handleCheckboxClick} checked={false}/>
-        }
-        ),
-        tasksDone: []
-      }
-    }  
-  
-    createTask = (index, title, callback, checked) => <Task key={index} id={index} title={title} callback={callback} checked={checked}/>
-  
-    handleCheckboxClick = (doneTask) => { // doneTask=[checked, id]
+    const handleCheckboxClick = (doneTask) => { // doneTask=[checked, id]
+      var changedTask;
+      var taskIndex;
+
+      var newTasks = tasks;
+      var newTasksDone = tasksDone;        
+
       if(doneTask.checked){
-        var task = this.state.tasks.find(cTask => cTask.props.id === doneTask.id);
-        const taskIndex = this.state.tasks.findIndex(cTask => cTask.props.id === doneTask.id);
+        
+        changedTask = tasks.find(cTask => cTask.props.id === doneTask.id);
+        taskIndex = tasks.findIndex(cTask => cTask.props.id === doneTask.id);
+
+        newTasks.splice(taskIndex,1);
        
-        var tasks = this.state.tasks;
-        tasks.splice(taskIndex,1);
-       
-        var tasksDone = this.state.tasksDone;
-        task = this.createTask(task.props.id, task.props.title, this.handleCheckboxClick, true)//<Task key={task.props.id} id={task.props.id} title={task.props.title} callback={this.handleCheckboxClick} checked={true}/>
-        tasksDone.unshift(task)
+        changedTask = createTask(changedTask.props.id, changedTask.props.title, handleCheckboxClick, true)//<Task key={task.props.id} id={task.props.id} title={task.props.title} callback={this.handleCheckboxClick} checked={true}/>
+        newTasksDone.unshift(changedTask)
   
-        this.setState((state) => ({
-          tasks: tasks,
-          tasksDone: tasksDone
-        }));
       } else {
         
 
-        var task = this.state.tasksDone.find(cTask => cTask.props.id === doneTask.id);
-        const taskIndex = this.state.tasksDone.findIndex(cTask => cTask.props.id === doneTask.id);
+        changedTask = tasksDone.find(cTask => cTask.props.id === doneTask.id);
+        taskIndex = tasksDone.findIndex(cTask => cTask.props.id === doneTask.id);
         
-        var tasksDone = this.state.tasksDone;
-        tasksDone.splice(taskIndex,1);
+        newTasksDone.splice(taskIndex,1);
   
-        var tasks = this.state.tasks;
-        task = this.createTask(task.props.id, task.props.title, this.handleCheckboxClick, false)
-        tasks.push(task)
+        changedTask = createTask(changedTask.props.id, changedTask.props.title, handleCheckboxClick, false)
+        newTasks.push(changedTask)
         
-        this.setState(state => ({
-          tasks: tasks,
-          tasksDone: tasksDone
-        }));
+        
       }
+
+      changeTasks([...newTasks]);
+      changeTasksDone((newTasksDone !== undefined ? [...newTasksDone]: []));
     }
+
+    const [tasks, changeTasks] = useState(["Brötchen backen", "Brötchen verkaufen", "Geld aus der Kasse nehmen", "Feierabend"].map((taskTitle, index) => {
+      return createTask(index, taskTitle, handleCheckboxClick, false)//<Task key={index} id={index} title={taskTitle} callback={this.handleCheckboxClick} checked={false}/>
+    }));
+    const [tasksDone, changeTasksDone] = useState([])
+    
+    return (
+      <div>
+        <ul className="task-list">
+          {tasks}
+        </ul>
+        {tasksDone.length != 0 && <hr className="task-list-divider"/>}
+        <ul className="task-list done">
+          {tasksDone}
+        </ul>
+      </div>
+    )
   
-    render () {
-      return (
-        <div>
-          <ul className="task-list">
-            {this.state.tasks}
-          </ul>
-          {this.state.tasksDone.length != 0 && <hr className="task-list-divider"/>}
-          <ul className="task-list done">
-            {this.state.tasksDone}
-          </ul>
-        </div>
-      )
-    }
   }
