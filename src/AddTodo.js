@@ -1,7 +1,6 @@
 import "./AddTodo.css"
 import {BsPlus} from "react-icons/bs"
-import React, {useState, useEffect} from "react"
-import { GiConsoleController } from "react-icons/gi";
+import React, {useState} from "react"
 
 function AddText (props) {
 
@@ -42,10 +41,9 @@ function AddButton (props){
 
 export default function AddView (props) {
     const [taskTitle, setTaskTitle] = useState("")
-    const [submitted, setSubmitted] = useState(false);
 
     function taskSubmitted () {
-        if(taskTitle != ""){
+        if(taskTitle !== ""){
             props.callbackInput(taskTitle)
         }
     }

@@ -5,12 +5,8 @@ import AddView from "./AddTodo"
 
 function PageWrapper () {
 
-  var newTitle = ""
-  var submitted
-
   function callbackInput (title){
     console.log(title)
-    newTitle = title;
   }
 
   return (

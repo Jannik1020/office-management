@@ -136,7 +136,7 @@ import "./TodoView.css"
         <ul className="task-list">
           {tasks}
         </ul>
-        {tasksDone.length != 0 && <hr className="task-list-divider"/>}
+        {tasksDone.length !== 0 && <hr className="task-list-divider"/>}
         <ul className="task-list done">
           {tasksDone}
         </ul>
