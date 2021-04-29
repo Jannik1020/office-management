@@ -33,7 +33,7 @@ import "./TodoView.css"
     )
   }
   
-  function Checkbox ({initChecked, callback}) {
+  function Checkbox (props) {
     
     const firstRender = useRef(true)
     const callback = props.callback;
