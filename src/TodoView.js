@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useRef, useState} from "react"
 import {BiCalendarEvent} from "react-icons/bi"
 import {BsBell} from "react-icons/bs"
 import {GiCheckMark} from "react-icons/gi"
@@ -35,6 +35,7 @@ function TaskTitle (props) {
   
   function Checkbox (props) {
     
+    const firstRender = useRef(true)
     const [checked, setChecked] = useState(props.checked);
     const [hovering, setHovering] = useState(false);
   
@@ -48,13 +49,17 @@ function TaskTitle (props) {
   
     function handleClick(){   
       setChecked(!checked);
-      props.callback(checked)
-      /*this.setState({
-        checked: !this.state.checked
-      }, function () {
-        this.props.callback(this.state.checked);
-      });*/
     }
+
+    useEffect (() => {      
+      if(!firstRender.current){
+        props.callback(checked);  
+      }
+    }, [checked])
+
+    useEffect (() => {
+      firstRender.current = false
+    }, [])
 
     var clrIcon = checked ? "#fff" : "#4caf50";
     var clrBackground = checked ? "#4caf50" : "#fff";
@@ -101,7 +106,6 @@ function TaskTitle (props) {
   
     handleCheckboxClick = (doneTask) => { // doneTask=[checked, id]
       if(doneTask.checked){
-       
         var task = this.state.tasks.find(cTask => cTask.props.id === doneTask.id);
         const taskIndex = this.state.tasks.findIndex(cTask => cTask.props.id === doneTask.id);
        
@@ -117,7 +121,8 @@ function TaskTitle (props) {
           tasksDone: tasksDone
         }));
       } else {
-  
+        
+
         var task = this.state.tasksDone.find(cTask => cTask.props.id === doneTask.id);
         const taskIndex = this.state.tasksDone.findIndex(cTask => cTask.props.id === doneTask.id);
         
