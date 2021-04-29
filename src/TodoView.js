@@ -33,10 +33,10 @@ import "./TodoView.css"
     )
   }
   
-  function Checkbox ({checked, callback}) {
+  function Checkbox ({initChecked, callback}) {
     
     const firstRender = useRef(true)
-    const [checked, setChecked] = useState(props.checked);
+    const [checked, setChecked] = useState(initChecked);
     const [hovering, setHovering] = useState(false);
   
     function initHover (){
