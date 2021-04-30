@@ -14,7 +14,7 @@ import "./TodoView.css"
     )
   }*/
   
-  function TaskExtras () {
+  /*function TaskExtras () {
     return (
       <div className="task-extras">
         <BsBell className="ic-extra ic-bell"/>
@@ -22,17 +22,21 @@ import "./TodoView.css"
         bis 07.02.23
       </div>
     )
-  }
+  }*/
   
   function TaskDescription (props){
     return (
       <div className="task-desc">
-          <div className="task-title">
-            <p className="text">
-              {props.title}
-            </p>
-          </div>
-        <TaskExtras />
+        <div className="task-title">
+          <p className="text">
+            {props.title}
+          </p>
+        </div>
+        <div className="task-extras">
+          <BsBell className="ic-extra ic-bell"/>
+          <BiCalendarEvent className="ic-extra ic-calendar"/>
+          bis 07.02.23
+        </div>
       </div>
     )
   }
