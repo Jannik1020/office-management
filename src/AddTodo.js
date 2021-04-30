@@ -2,7 +2,7 @@ import "./AddTodo.css"
 import {BsPlus} from "react-icons/bs"
 import React, {useState} from "react"
 
-function AddText (props) {
+/*function AddText (props) {
 
     const [value, setValue] = useState(""); 
     const callbackText = props.callbackText;
@@ -24,7 +24,7 @@ function AddText (props) {
             <input type="input" value={value} onChange={handleChange} placeholder="Neue Aufgabe" className="add-field-input" onKeyPress={handleKeyPress}/>
         </div>
     )
-}
+}*/
 
 function AddButton (props){
 
@@ -55,7 +55,9 @@ export default function AddView (props) {
     return (
         <div className="add-view">
             <AddButton callback={taskSubmitted}/>
-            <AddText callbackText={taskAdded} callbackSubmit={taskSubmitted}/>
+            <div className="add-field">
+                <input type="input" value={value} onChange={} placeholder="Neue Aufgabe" className="add-field-input" onKeyPress={}/>
+            </div>    
         </div>
     )
 }
