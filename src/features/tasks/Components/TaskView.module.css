@@ -1,12 +1,20 @@
 .defaultText {
   height: 30vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   font-size: 2em;
   color: #767676;
 }
+
+.defaultIcon {
+  margin-top: 1.3em;
+  width: 1.3em;
+  height: 1.3em;
+}
+
 .completedText {
   height: 4rem;
   margin-top: 1.5rem;
