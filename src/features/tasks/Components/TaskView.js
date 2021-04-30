@@ -11,7 +11,7 @@ import styles from "./TaskView.module.css"
           {tasks}
         </ul>
         {completedTask.length !== 0 && <hr className={styles.taskListDivider}/>}
-        <ul className={styles.taskList, styles.done}>
+        <ul className={`${styles.taskList} ${styles.done}`}>
           {completedTask}
         </ul>
       </div>

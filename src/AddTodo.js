@@ -1,9 +1,9 @@
 import "./AddTodo.css"
 import {BsPlus} from "react-icons/bs"
-import React, {useState} from "react"
+/*import React, {useState} from "react"*/
 
 export default function AddView (props) {
-    const [taskTitle, setTaskTitle] = useState("")
+    /*const [taskTitle, setTaskTitle] = useState("")
 
     function taskSubmitted () {
         if(taskTitle !== ""){
@@ -13,7 +13,7 @@ export default function AddView (props) {
 
     function taskAdded (title) {
         setTaskTitle(title)
-    }
+    }*/
 
     return (
         <div className="add-view">

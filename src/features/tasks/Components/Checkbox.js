@@ -32,7 +32,7 @@ export default function Checkbox (props) {
          dispatch(readdTask(props.id));
        }
     }
-  }, [checked])
+  }, [checked, props.id, dispatch])
 
   useEffect (() => {
     firstRender.current = false

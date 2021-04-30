@@ -1,4 +1,4 @@
-import {createSlice, nanoid} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {createTask} from "./util"
 
 const initialState = {tasks: ["Brötchen backen", "Brötchen verkaufen", "Geld aus der Kasse nehmen", "Feierabend"].map((task) => createTask(task)), completedTasks: []};
