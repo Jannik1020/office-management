@@ -29,6 +29,14 @@
   margin-bottom: 0;
 }
 
+.done > * {
+  background-color: #f0faff;
+}
+
+.done p {
+  color: #4caf50;
+}
+
 .taskListDivider {
   border: 0.1rem solid #617999;
   border-radius: 2%;
