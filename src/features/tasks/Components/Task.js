@@ -1,5 +1,6 @@
 import React from "react"
 import Checkbox from "./Checkbox.js"
+import Delete from "./Delete"
 import {BiCalendarEvent} from "react-icons/bi"
 import {BsBell} from "react-icons/bs"
 import styles from "./Task.module.css"
@@ -21,6 +22,9 @@ export default function Task(props) {
             <BiCalendarEvent className={`${styles.icExtra} ${styles.icCalendar}`}/>
             bis 07.02.23
           </div>
+        </div>
+        <div className={styles.deleteWrapper}>
+          <Delete />
         </div>
       </li>
     )
