@@ -1,19 +1,4 @@
-.task-list {
-  list-style-type: none;
-  margin-bottom: 1.5rem;
-}
-
-.task-list.done {
-  margin-bottom: 0;
-  margin-top: 1.5rem;
-}
-
-.task-list-divider {
-  border: 0.1rem solid #617999;
-  border-radius: 2%;
-}
-
-.task-list > .task:first-child {
+.task:first-child {
   border-top: 1px solid #dbf2ff;
 }
 
@@ -30,7 +15,7 @@
   background-color: #f0faff;
 }
 
-.checkbox-wrapper {
+.checkboxWrapper {
   height: 100%;
   width: 3rem; /*should be same as .task height */
   display: flex;
@@ -38,19 +23,7 @@
   align-items: center;
 }
 
-.checkbox {
-  width: 40%;
-  height: 40%;
-  border: 2px solid #4caf50;
-  border-radius: 15%;
-  position: relative;
-  top: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.task-desc {
+.taskDesc {
   height: 100%;
   width: auto;
   padding-left: 0.6rem;
@@ -59,18 +32,18 @@
   align-items: center;
 }
 
-.task-desc > div {
+.taskDesc > div {
   display: flex;
   align-items: center;
 }
 
-.task-title {
+.taskTitle {
   height: 100%;
   font-size: 1.4em;
   color: #232323;
 }
 
-.task-extras {
+.taskExtras {
   margin-left: 0.4em;
   font-size: 0.9em;
   color: #777;
@@ -78,16 +51,10 @@
   top: 4%;
 }
 
-.ic-extra {
+.icExtra {
   font-size: 1.2em;
   margin-right: 0.4rem;
   color: #777;
-}
-
-.ic-checkbox {
-  visibility: hidden;
-  width: 75%;
-  height: 75%;
 }
 
 .text {

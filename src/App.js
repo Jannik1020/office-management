@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react"
-import TaskList from "./TodoView"
+import TaskView from "./features/tasks/Components/TaskView"
 import AddView from "./AddTodo"
 
 function PageWrapper () {
@@ -11,7 +11,7 @@ function PageWrapper () {
 
   return (
     <div className="page-wrapper">
-      <TaskList/>
+      <TaskView/>
       <AddView callbackInput={callbackInput}/>
     </div>
   )
