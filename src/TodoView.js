@@ -5,7 +5,7 @@ import {GiCheckMark} from "react-icons/gi"
 import "./TodoView.css"
 
  
-  function TaskDescription (props){
+  /*function TaskDescription (props){
     return (
       <div className="task-desc">
         <div className="task-title">
@@ -20,7 +20,7 @@ import "./TodoView.css"
         </div>
       </div>
     )
-  }
+  }*/
   
   function Checkbox (props) {
     
@@ -72,7 +72,18 @@ import "./TodoView.css"
         <div className="checkbox-wrapper">
           <Checkbox callback={handleDone} checked={props.checked}/>
         </div>
-        <TaskDescription title={props.title} />
+        <div className="task-desc">
+          <div className="task-title">
+            <p className="text">
+              {props.title}
+            </p>
+          </div>
+          <div className="task-extras">
+            <BsBell className="ic-extra ic-bell"/>
+            <BiCalendarEvent className="ic-extra ic-calendar"/>
+            bis 07.02.23
+          </div>
+        </div>
       </li>
     )
   }
