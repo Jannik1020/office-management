@@ -4,7 +4,7 @@ import {BsBell} from "react-icons/bs"
 import {GiCheckMark} from "react-icons/gi"
 import "./TodoView.css"
 
-  function TaskTitle (props) {
+  /*function TaskTitle (props) {
     return (
       <div className="task-title">
         <p className="text">
@@ -12,7 +12,7 @@ import "./TodoView.css"
         </p>
       </div>
     )
-  }
+  }*/
   
   function TaskExtras () {
     return (
@@ -27,7 +27,11 @@ import "./TodoView.css"
   function TaskDescription (props){
     return (
       <div className="task-desc">
-        <TaskTitle title={props.title}/>
+          <div className="task-title">
+            <p className="text">
+              {props.title}
+            </p>
+          </div>
         <TaskExtras />
       </div>
     )
