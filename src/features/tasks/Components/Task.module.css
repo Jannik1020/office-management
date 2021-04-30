@@ -1,6 +1,6 @@
-.task:first-child {
+/*.task:first-child {
   border-top: 1px solid #dbf2ff;
-}
+}*/
 
 .task {
   height: 3rem;
@@ -39,7 +39,7 @@
 
 .taskTitle {
   height: 100%;
-  font-size: 1.4em;
+  font-size: 1.3em;
   color: #232323;
 }
 

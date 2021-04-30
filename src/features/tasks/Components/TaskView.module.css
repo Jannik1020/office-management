@@ -29,17 +29,16 @@
 
 .taskList {
   list-style-type: none;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
 }
 
 .done {
   margin-bottom: 0;
 }
 
+/*
 .done > * {
   background-color: #f0faff;
-}
+}*/
 
 .done p {
   color: #4caf50;
@@ -48,4 +47,46 @@
 .taskListDivider {
   border: 0.1rem solid #617999;
   border-radius: 2%;
+}
+
+.sectionHeader {
+  height: 3rem;
+
+  padding: 0.5rem;
+
+  border-bottom: 0.1rem solid black;
+
+  display: flex;
+  align-items: center;
+}
+
+.completedTasks {
+  border-bottom: 0.1rem solid #4caf50;
+}
+
+.sectionHeader:hover {
+  background-color: #dcf1fc;
+  cursor: pointer;
+}
+
+.icSectionWrapper {
+  height: 100%;
+  width: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icSection {
+  height: 1.5em;
+  width: 1.5em;
+
+  position: relative;
+  top: 2%;
+}
+
+.headerTitle {
+  font-size: 1.4em;
+  flex-grow: 1;
 }
