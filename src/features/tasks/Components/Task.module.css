@@ -15,9 +15,10 @@
   background-color: #f0faff;
 }
 
-.checkboxWrapper {
+.iconWrapper {
   height: 100%;
   width: 3rem; /*should be same as .task height */
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,13 +61,4 @@
 .text {
   display: flex;
   justify-content: center;
-}
-
-.deleteWrapper {
-  height: 100%;
-  width: 3rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

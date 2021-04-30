@@ -1,6 +1,7 @@
 import React from "react"
 import Checkbox from "./Checkbox.js"
 import Delete from "./Delete"
+import Important from "./Important"
 import {BiCalendarEvent} from "react-icons/bi"
 import {BsBell} from "react-icons/bs"
 import styles from "./Task.module.css"
@@ -8,7 +9,7 @@ import styles from "./Task.module.css"
 export default function Task(props) {  
     return (
       <li className={styles.task}>
-        <div className={styles.checkboxWrapper}>
+        <div className={styles.iconWrapper}>
           <Checkbox id={props.id} checked={props.checked}/>
         </div>
         <div className={styles.taskDesc}>
@@ -23,7 +24,10 @@ export default function Task(props) {
             bis 07.02.23
           </div>
         </div>
-        <div className={styles.deleteWrapper}>
+        <div className={styles.iconWrapper}>
+          <Important id={props.id} important={props.important}/>
+        </div>
+        <div className={styles.iconWrapper}>
           <Delete id={props.id}/>
         </div>
       </li>

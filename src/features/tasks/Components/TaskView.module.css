@@ -37,7 +37,7 @@
 
 /*
 .done > * {
-  background-color: #f0faff;
+  bo
 }*/
 
 .done p {
@@ -62,6 +62,10 @@
 
 .completedTasks {
   border-bottom: 0.1rem solid #4caf50;
+}
+
+.importantTasks {
+  border-bottom: 0.1rem solid red;
 }
 
 .sectionHeader:hover {

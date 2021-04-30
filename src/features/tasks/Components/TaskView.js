@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux"
-import {selectTasks, selectCompletedTasks} from "../tasksSlice"
+import {selectTasks, selectCompletedTasks, selectImportantTasks} from "../tasksSlice"
 import styles from "./TaskView.module.css"
 import {ImArrowDown} from "react-icons/im"
 import {RiArrowDownSLine} from "react-icons/ri"
@@ -31,8 +31,9 @@ import { useState } from "react"
   export default function TaskView () { 
     var tasks = useSelector(selectTasks)
     var completedTask = useSelector(selectCompletedTasks)
+    var importantTasks = useSelector(selectImportantTasks)
 
-    const [sections, setSections] = useState({"tasks": true, "completedTasks": true})
+    const [sections, setSections] = useState({"tasks": true, "completedTasks": true, "importantTasks": true})
 
     function handleCollapse (section) {
       var sectionsChanged = sections;
@@ -42,14 +43,20 @@ import { useState } from "react"
 
     return (
       <div>
-        {(tasks.length === 0 && completedTask.length === 0) && (
+        {(tasks.length === 0 && completedTask.length === 0 && importantTasks.length === 0) && (
           <div className={styles.defaultText}>
             Füge eine Aufgabe hinzu!
             <ImArrowDown className={styles.defaultIcon}></ImArrowDown>
           </div>
-        )}        
+        )}    
+        {(importantTasks.length > 0) && <SectionHeader header="Wichtige Aufgaben" section="importantTasks" onClick={handleCollapse} collapsed={!sections["importantTasks"]} />}
+        {sections["importantTasks"] &&
+          <ul className={`${styles.taskList} ${styles.important}`}>
+            {importantTasks}
+          </ul>
+        }    
         {(tasks.length > 0 || completedTask.length > 0) && <SectionHeader header="Ausstehende Aufgaben" section="tasks" onClick={handleCollapse} collapsed={!sections["tasks"]} />}
-        {(tasks.length === 0 && completedTask.length > 0) && <div className={styles.completedText}>Super! Du hast alle Aufgaben erledigt</div>}
+        {(tasks.length === 0 && importantTasks.length === 0 &&completedTask.length > 0) && <div className={styles.completedText}>Super! Du hast alle Aufgaben erledigt</div>}
         {sections["tasks"] &&
           <ul className={styles.taskList}>
             {tasks}
