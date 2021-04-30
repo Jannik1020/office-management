@@ -8,7 +8,7 @@ export const tasksSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => { // action.payload: title
-      const title = action.payload.title;
+      const title = action.payload;
       state.tasks.unshift(createTask(title));
     },
     completeTask: (state, action) => { //action.payload: id (checked)

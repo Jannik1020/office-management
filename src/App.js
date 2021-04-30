@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react"
 import TaskView from "./features/tasks/Components/TaskView"
-import AddView from "./AddTodo"
+import AddView from "./features/tasks/Components/AddView"
 
 function PageWrapper () {
 
