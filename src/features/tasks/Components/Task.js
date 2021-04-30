@@ -24,7 +24,7 @@ export default function Task(props) {
           </div>
         </div>
         <div className={styles.deleteWrapper}>
-          <Delete />
+          <Delete id={props.id}/>
         </div>
       </li>
     )

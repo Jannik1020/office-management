@@ -11,6 +11,15 @@ export const tasksSlice = createSlice({
       const title = action.payload;
       state.tasks.unshift(createTask(title));
     },
+    removeTask: (state, action) => { //action.payload: id
+      const id = action.payload;
+      const completed = state.completedTasks.filter(task => task.props.id === id)
+
+      if(completed.length !== 0) {
+        state.completedTasks = state.completedTasks.filter(task => task.props.id !== id)
+      }
+     state.tasks = state.tasks.filter(task => task.props.id !== id)
+    },
     completeTask: (state, action) => { //action.payload: id (checked)
       const id = action.payload;
       const completedTask = state.tasks.filter((task) => task.props.id === id)[0]
@@ -28,7 +37,7 @@ export const tasksSlice = createSlice({
   }
 })
 
-export const {addTask, completeTask, readdTask} = tasksSlice.actions;
+export const {addTask, removeTask, completeTask, readdTask} = tasksSlice.actions;
 export const selectTasks = (state) => state.tasks.tasks
 export const selectCompletedTasks = (state) => state.tasks.completedTasks
 export default tasksSlice.reducer;

@@ -1,11 +1,21 @@
 import React from "react"
 import styles from "./Delete.module.css"
 
-import {IoRemove} from "react-icons/io5"
 import {VscRemove} from "react-icons/vsc"
 
-export default function Delete () {
+import {useDispatch} from "react-redux"
+
+import {removeTask} from "../tasksSlice"
+
+export default function Delete (props) {
+  const dispatch = useDispatch()
+
+  function handleClick () {
+    console.log("Hello")
+    dispatch(removeTask(props.id));
+  }
+
   return (
-    <VscRemove className={styles.icDelete} />
+    <VscRemove onClick={handleClick} className={styles.icDelete} />
   )
 } 
