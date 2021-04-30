@@ -4,15 +4,11 @@ import {BiCalendarEvent} from "react-icons/bi"
 import {BsBell} from "react-icons/bs"
 import styles from "./Task.module.css"
 
-export default function Task(props) {
-    function handleDone (checked){
-      props.callback({checked: checked, id: props.id});
-    }
-  
+export default function Task(props) {  
     return (
       <li className={styles.task}>
         <div className={styles.checkboxWrapper}>
-          <Checkbox callback={handleDone} checked={props.checked}/>
+          <Checkbox id={props.id} checked={props.checked}/>
         </div>
         <div className={styles.taskDesc}>
           <div className={styles.taskTitle}>
