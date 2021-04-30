@@ -26,7 +26,7 @@ import React, {useState} from "react"
     )
 }*/
 
-function AddButton (props){
+/*function AddButton (props){
 
     function handleClick() {
         props.callback()
@@ -37,7 +37,7 @@ function AddButton (props){
             <BsPlus onClick={handleClick} className="ic-add-btn"/>
         </div>
     )
-}
+}*/
 
 export default function AddView (props) {
     const [taskTitle, setTaskTitle] = useState("")
@@ -54,7 +54,9 @@ export default function AddView (props) {
 
     return (
         <div className="add-view">
-            <AddButton callback={taskSubmitted}/>
+            <div className="add-btn">
+                <BsPlus onClick={} className="ic-add-btn"/>
+            </div>
             <div className="add-field">
                 <input type="input" value={value} onChange={} placeholder="Neue Aufgabe" className="add-field-input" onKeyPress={}/>
             </div>    
