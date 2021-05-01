@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import Checkbox from "./Checkbox.js"
 import Delete from "./Delete"
 import Important from "./Important"
@@ -6,15 +6,21 @@ import {BiCalendarEvent} from "react-icons/bi"
 import {BsBell} from "react-icons/bs"
 import styles from "./Task.module.css"
 
-export default function Task(props) {  
+export default function Task(props) {
+    const [editable, setEditable] = useState(false);
+  
+    function handleDoubleClick () {
+      setEditable(!editable)
+    }
+
     return (
       <li className={styles.task}>
         <div className={styles.iconWrapper}>
           <Checkbox id={props.id} section={props.section} checked={props.checked} />
         </div>
         <div className={styles.taskDesc}>
-          <div className={styles.taskTitle}>
-            <p className={styles.text}>
+          <div className={styles.taskTitle} >
+            <p className={styles.text} onDoubleClick={handleDoubleClick}>
               {props.title}
             </p>
           </div>
