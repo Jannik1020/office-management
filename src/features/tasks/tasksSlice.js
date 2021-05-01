@@ -9,7 +9,7 @@ export const tasksSlice = createSlice({
   reducers: {
     addSection: (state, action) => { //action.payload: section header
       const [section, header] = action.payload
-      state[section] = []
+      state[section] = {tasks: [], header: header};
     },
     addTask: (state, action) => { // action.payload: title, section
       const title = action.payload[0];
