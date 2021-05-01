@@ -25,7 +25,7 @@ export default function Task(props) {
           </div>
         </div>
         <div className={styles.iconWrapper}>
-          <Important id={props.id} section={props.section} important={props.important}/>
+          {!props.checked && <Important id={props.id} section={props.section} important={props.important}/> }
         </div>
         <div className={styles.iconWrapper}>
           <Delete id={props.id} section={props.section}/>

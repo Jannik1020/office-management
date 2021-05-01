@@ -15,6 +15,11 @@
   height: 1.3em;
 }
 
+.sections {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .completedText {
   height: 4rem;
   margin-top: 1.5rem;
@@ -42,11 +47,6 @@
 
 .done p {
   color: #4caf50;
-}
-
-.taskListDivider {
-  border: 0.1rem solid #617999;
-  border-radius: 2%;
 }
 
 .sectionHeader {
