@@ -10,7 +10,7 @@ export default function Task(props) {
     return (
       <li className={styles.task}>
         <div className={styles.iconWrapper}>
-          <Checkbox id={props.id} checked={props.checked}/>
+          <Checkbox id={props.id} section={props.section} checked={props.checked} />
         </div>
         <div className={styles.taskDesc}>
           <div className={styles.taskTitle}>
@@ -25,10 +25,10 @@ export default function Task(props) {
           </div>
         </div>
         <div className={styles.iconWrapper}>
-          <Important id={props.id} important={props.important}/>
+          <Important id={props.id} section={props.section} important={props.important}/>
         </div>
         <div className={styles.iconWrapper}>
-          <Delete id={props.id}/>
+          <Delete id={props.id} section={props.section}/>
         </div>
       </li>
     )

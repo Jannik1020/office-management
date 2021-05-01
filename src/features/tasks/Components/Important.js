@@ -3,7 +3,7 @@ import styles from "./Important.module.css"
 
 import {useDispatch} from "react-redux"
 
-import {dePrioritizeTask, prioritizeTask} from "../tasksSlice"
+import {moveToSection, prioritiseTask} from "../tasksSlice"
 
 export default function Delete (props) {
 
@@ -14,18 +14,19 @@ export default function Delete (props) {
 
   function handleClick () {
     setImportant(!important)
+    dispatch(prioritiseTask([props.id, !important, props.section]))
   }
 
   useEffect(() => {
     if(!firstRender.current){
       if(important) {      
-        dispatch(prioritizeTask(props.id));
+        dispatch(moveToSection([props.id, props.section, "importantTasks"]));
       }
       else {
-        dispatch(dePrioritizeTask(props.id))
+        dispatch(moveToSection([props.id, props.section, "tasks"]))
       }
     }
-  }, [important, dispatch, props.id])
+  }, [important, props.section, dispatch, props.id])
 
   useEffect (() => {
     firstRender.current = false

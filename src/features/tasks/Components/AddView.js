@@ -9,7 +9,7 @@ export default function AddView (props) {
     const dispatch = useDispatch();
 
     function handleSubmit () {
-        dispatch(addTask(title));
+        dispatch(addTask([title, "tasks"]));
         setTitle("")
     }
 

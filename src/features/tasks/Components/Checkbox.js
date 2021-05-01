@@ -1,10 +1,10 @@
 import React, {useState, useRef, useEffect} from "react";
 import {GiCheckMark} from "react-icons/gi"
 import {useDispatch} from "react-redux"
-import {completeTask, readdTask} from "../tasksSlice"
+import {moveToSection, checkTask} from "../tasksSlice"
 import styles from "./Checkbox.module.css"
 
-export default function Checkbox (props) {
+export default function Checkbox (props) { //checked, id, section
     
   const firstRender = useRef(true);
   const dispatch = useDispatch();
@@ -21,18 +21,19 @@ export default function Checkbox (props) {
 
   function handleClick(){   
     setChecked(!checked);
+    dispatch(checkTask([props.id, !checked, props.section]));
   }
 
   useEffect (() => {      
     if(!firstRender.current){
        if(checked) {
-         dispatch(completeTask(props.id));
+         dispatch(moveToSection([props.id, props.section, "completedTasks"]));
        }
        else{
-         dispatch(readdTask(props.id));
+         dispatch(moveToSection([props.id, props.section, "tasks"]));
        }
     }
-  }, [checked, props.id, dispatch])
+  }, [checked, props.id, props.section, dispatch])
 
   useEffect (() => {
     firstRender.current = false

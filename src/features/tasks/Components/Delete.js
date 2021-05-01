@@ -11,7 +11,7 @@ export default function Delete (props) {
   const dispatch = useDispatch()
 
   function handleClick () {
-    dispatch(removeTask(props.id));
+    dispatch(removeTask([props.id, props.section]));
   }
 
   return (
