@@ -4,8 +4,10 @@ import {editTask} from "../tasksSlice"
 import Checkbox from "./Checkbox.js"
 import Delete from "./Delete"
 import Important from "./Important"
+/*
 import {BiCalendarEvent} from "react-icons/bi"
 import {BsBell} from "react-icons/bs"
+*/
 import styles from "./Task.module.css"
 
 export default function Task(props) {
@@ -17,9 +19,6 @@ export default function Task(props) {
   
     function handleDoubleClick () {
       setEditable(true)
-    }
-
-    function handleFocus (e) {
     }
 
     function handleInput (e) {
@@ -52,15 +51,6 @@ export default function Task(props) {
         </div>
         <div className={styles.taskDesc}>
           <div className={styles.taskTitle} onDoubleClick={handleDoubleClick}>
-            {/*editable && <input value={title} className={styles.input} style={{fontSize: `${title.length} ch`}} onFocus={handleFocus} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} type="input" autoFocus/>*/}
-            {/*!editable ?
-              <p className={styles.text} contentEditable>
-                {title}
-              </p> :
-              <p className={styles.textEditable} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} contentEditable>
-                {title}
-              </p>
-            */}
             <input style={{width: inputWidth}} value={title} className={styles.text} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} type="input" readOnly={readOnly} />
             {/*editable ?
               <input value={title} className={styles.textEditable} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} type="input" />:
