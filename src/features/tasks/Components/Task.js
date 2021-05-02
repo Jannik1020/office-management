@@ -38,7 +38,8 @@ export default function Task(props) {
     }
 
     var inputWidth = title.length + "ch";
-    
+    var readOnly = !props.checked ? !editable : true;
+
     /**
      * TODO:
      *  - <input /> soll width abhängig vom content GLEICHMÄßIG verändern
@@ -60,7 +61,7 @@ export default function Task(props) {
                 {title}
               </p>
             */}
-            <input style={{width: inputWidth}} value={title} className={styles.text} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} type="input" readOnly={!editable} />
+            <input style={{width: inputWidth}} value={title} className={styles.text} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} type="input" readOnly={readOnly} />
             {/*editable ?
               <input value={title} className={styles.textEditable} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} type="input" />:
               <input value={title} className={styles.textReadOnly} onChange={handleInput} onBlur={handleSubmit} onKeyPress={handleKeyPress} type="input" readOnly />
