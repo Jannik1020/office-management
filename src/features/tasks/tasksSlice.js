@@ -55,10 +55,20 @@ export const tasksSlice = createSlice({
       importantTask.props.important = important;
   
       state[section].tasks[indexImportantTask] = importantTask;
+    },
+    editTask: (state, action) => { //action.payload: id, title, section
+      const [id,title, section] = action.payload
+
+      const editedTask = state[section].tasks.filter((task) => task.props.id === id)[0];
+      const indexEditedTask = state[section].tasks.findIndex((task) => task.props.id === id);
+  
+      editedTask.props.title = title;
+  
+      state[section].tasks[indexEditedTask] = editedTask;
     }
   }
 })
 
-export const {addSection, addTask, removeTask, moveToSection, checkTask, prioritiseTask} = tasksSlice.actions;
+export const {addSection, addTask, removeTask, moveToSection, checkTask, prioritiseTask, editTask} = tasksSlice.actions;
 export const selectTasks = (state) => state.tasks;
 export default tasksSlice.reducer;
